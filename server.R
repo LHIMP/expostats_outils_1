@@ -25,30 +25,27 @@ library(rjags)
 library(png)
 library(ggimage)
 library(gridExtra)
+library(here)
 
 ######################     scripts to source
 
-setwd("./scripts")
-
 ##SEG SPECIFIC FUNCTIONS
 
-source("SEG/Data formatting functions_SEG.R")
+source(here("scripts", "SEG", "Data formatting functions_SEG.R"))
 
 ##COMMON
 
-source("Common/Simple censored imputation functions.R")
+source(here("scripts","Common", "Simple censored imputation functions.R"))
 
-source("Common/Descriptive numerical output functions.R")
+source(here("scripts","Common", "Descriptive numerical output functions.R"))
 
-source("Common/Descriptive graphs functions.R")
+source(here("scripts","Common", "Descriptive graphs functions.R"))
 
-source("Common/Bayesian engine functions.R")
+source(here("scripts","Common", "Bayesian engine functions.R"))
 
-source("Common/Numerical output functions.R")
+source(here("scripts","Common", "Numerical output functions.R"))
 
-source("Common/Main graph functions.R")
-
-setwd("..")
+source(here("scripts","Common", "Main graph functions.R"))
 
 ####################   SHINY STUFF
 
@@ -142,6 +139,8 @@ shinyServer(function(input, output, session) {
       gett('res.desc.12'),
       gett('res.desc.13')
     )
+
+		colnames(result) <- c(gett('parameter'), gett('value'))
     
     return(result)
     
