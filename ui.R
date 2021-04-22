@@ -22,6 +22,7 @@ library(ggplot2)
 library(shinythemes)
 library(shinycssloaders)
 library(colourpicker)
+library(here)
 
 mycss <- "
 div.shiny-plot-output { margin: 0 auto }
@@ -62,7 +63,7 @@ inputTextarea <- function(inputId, value="", nrows, ncols) {
   )
 }
 
-source("./langParams.R")
+source("langParams.R")
 
 tt <- function(param, txt="[0 &lt; valid &le; 100]") {
   return(bsTooltip(param, txt, "right", options = list(container = "body")))
